@@ -21,12 +21,15 @@ pipeline {
                 """}
         }
 
-        stage('Deploy') {
+        stage('Destroy') {
+            when {
+                expression { return params.DESTROY == true }
+            }
             steps {
                 echo "Deploying application..."
                 sh """
                   cd vpc
-                  terraform apply -auto-approve
+                  terraform destroy -auto-approve
                 """
             }
         }
