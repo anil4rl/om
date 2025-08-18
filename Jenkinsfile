@@ -21,10 +21,7 @@ pipeline {
                 """}
         }
 
-        stage('Destroy') {
-            when {
-                expression { return params.DESTROY == true }
-            }
+        stage('Destroy')
             steps {
                 echo "Deploying application..."
                 sh """
