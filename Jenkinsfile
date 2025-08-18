@@ -15,14 +15,19 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Running tests..."
-                sh 'echo "Simulating tests step"'
-            }
+                sh """
+                  cd vpc
+                  terraform validate
+                """}
         }
 
         stage('Deploy') {
             steps {
                 echo "Deploying application..."
-                sh 'echo "Simulating deployment step"'
+                sh """
+                  cd vpc
+                  terraform apply -auto-approve
+                """
             }
         }
     }
