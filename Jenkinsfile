@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'agent1' }   // ✔️ correct syntax
+    agent { label 'agent1' }
 
     stages {
         stage('Build') {
@@ -15,19 +15,20 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Running tests..."
-                sh """
+                sh '''
                   cd vpc
                   terraform validate
-                """}
+                '''
+            }
         }
 
-        stage('Destroy')
+        stage('Destroy') {
             steps {
-                echo "Deploying application..."
-                sh """
+                echo "Destroying infrastructure..."
+                sh '''
                   cd vpc
                   terraform destroy -auto-approve
-                """
+                '''
             }
         }
     }
