@@ -1,14 +1,14 @@
 pipeline {
-    agent any   // Runs on any available agent
+    agent { label 'agent1' }   // ✔️ correct syntax
 
     stages {
         stage('Build') {
             steps {
                 echo "Building the project..."
-                sh """
-                cd vpc
-                terraform init
-                """
+                sh '''
+                  cd vpc
+                  terraform init
+                '''
             }
         }
 
