@@ -22,12 +22,12 @@ pipeline {
             }
         }
 
-        stage('Destroy') {
+        stage('Deploy') {
             steps {
-                echo "Destroying infrastructure..."
+                echo "Deploying infrastructure..."
                 sh '''
                   cd vpc
-                  terraform destroy -auto-approve
+                  terraform deploy -auto-approve
                 '''
             }
         }
