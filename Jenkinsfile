@@ -27,7 +27,7 @@ pipeline {
                 echo "Deploying infrastructure..."
                 sh '''
                   cd vpc
-                  terraform deploy -auto-approve
+                  terraform apply -auto-approve
                 '''
             }
         }
